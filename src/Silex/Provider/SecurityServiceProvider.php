@@ -344,14 +344,14 @@ class SecurityServiceProvider implements ServiceProviderInterface, EventListener
                 if (is_string($rule[0])) {
                     $rule[0] = new RequestMatcher($rule[0]);
                 } elseif (is_array($rule[0])) {
-                    $rule[0] += [
+                    $rule[0] += array(
                         'path' => null,
                         'host' => null,
                         'methods' => null,
                         'ips' => null,
                         'attributes' => array(),
                         'schemes' => null,
-                    ];
+                    );
                     $rule[0] = new RequestMatcher($rule[0]['path'], $rule[0]['host'], $rule[0]['methods'], $rule[0]['ips'], $rule[0]['attributes'], $rule[0]['schemes']);
                 }
                 $map->add($rule[0], (array) $rule[1], isset($rule[2]) ? $rule[2] : null);
